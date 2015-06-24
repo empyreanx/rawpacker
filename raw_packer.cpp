@@ -169,6 +169,23 @@ Error RawPacker::encode(const String& fmt, const Array& array, uint8_t *buf, int
 				
 			} break;
 			
+			case 'v': {
+				
+				ERR_FAIL_COND_V(type!=Variant::STRING,ERR_INVALID_DATA);
+				
+				String str = (String)array[j];
+				
+				if (buf) {
+					for (int k=0;k<str.size();k++) {
+						*buf=str[k];
+						buf+=1;
+					}					
+				}
+				
+				len += str.size();
+				
+			} break;
+			
 			default:
 				ERR_FAIL_V(ERR_INVALID_PARAMETER);
 		}
@@ -349,6 +366,27 @@ Error RawPacker::decode(const String& fmt, Array& array, const uint8_t *buf, int
 					len+=str_size;
 				}
 			
+				array.push_back(str);
+			} break;
+			
+			case 'v': {
+			
+				ERR_FAIL_COND_V(size<len+1,ERR_INVALID_DATA);
+			
+				String str;
+			
+				while (*buf!='\0') {
+					
+					str.push_back((char)*buf);
+					buf+=1;
+					len+=1;
+					
+					ERR_FAIL_COND_V(size<len+1,ERR_INVALID_DATA);
+				}
+			
+				str.push_back('\0');
+				buf+=1;
+				len+=1;
 				array.push_back(str);
 			} break;
 			

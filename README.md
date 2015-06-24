@@ -15,14 +15,14 @@ Simply drop the `rawpacker` directory in your `godot/modules` directory and buil
 
 ```python
 var raw_packer = RawPacker.new()
-var raw_array = raw_packer.pack("?iis16fh", [false,1,2,"helloworld",3.14,-42])
-var array = raw_packer.unpack("?iis16fh", raw_array)
+var raw_array = raw_packer.pack("?iis16fhv", [false,1,2,"fixed string",3.14,-42,"variable string"])
+var array = raw_packer.unpack("?iis16fhv", raw_array)
 print(array)
 ```
 
 **Output:**
 ```
-False, 1, 2, helloworld, 3.14, -42
+False, 1, 2, fixed string, 3.14, -42, variable string
 ```
 
 ## Format Strings
@@ -41,6 +41,7 @@ False, 1, 2, helloworld, 3.14, -42
 | f      | float              | real       | 4            |
 | d      | double             | real       | 8            |
 | s#     | char[]             | string     | # 		      |
+| v      | char[]             | string     | variable     |
 
 ## License
 Copyright (c) 2015 James McLean  
