@@ -15,8 +15,8 @@ Simply drop the `rawpacker` directory in your `godot/modules` directory and buil
 
 ```python
 var raw_packer = RawPacker.new()
-var raw_array = raw_packer.pack("?iisfH", [false,1,2,"helloworld",3.14,-42])
-var array = raw_packer.unpack("?iisfH", raw_array)
+var raw_array = raw_packer.pack("?iis16fH", [false,1,2,"helloworld",3.14,-42])
+var array = raw_packer.unpack("?iis16fH", raw_array)
 print(array)
 ```
 
@@ -40,8 +40,7 @@ False, 1, 2, helloworld, 3.14, 65494
 | Q      | unsigned long long | integer    | 8            |
 | f      | float              | real       | 4            |
 | d      | double             | real       | 8            |
-| s      | char[]             | string     | varying      |
-| p      | char[]             | string     | varying      |
+| s#     | char[]             | string     | # 		      |
 
 ## License
 Copyright (c) 2015 James McLean  

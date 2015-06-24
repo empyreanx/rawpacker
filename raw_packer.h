@@ -16,6 +16,8 @@ class RawPacker : public Reference {
 	Error encode(const String& fmt, const Array& array, uint8_t *buf, int &len);
 	Error decode(const String& fmt, Array& array, const uint8_t *buf, int size);
 	
+	bool is_digit(char c);
+	
 protected:
 
     static void _bind_methods();
