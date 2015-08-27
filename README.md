@@ -36,11 +36,11 @@ False, 1, 2, fixed string, 3.14, -42, variable string
 | H      | unsigned short     | integer    | 2            |
 | i      | int                | integer    | 4            |
 | I      | unsigned int       | integer    | 4            |
-| q      | long long          | integer    | 8            |
-| Q      | unsigned long long | integer    | 8            |
+| q      | long int           | integer    | 8            |
+| Q      | unsigned long int  | integer    | 8            |
 | f      | float              | real       | 4            |
 | d      | double             | real       | 8            |
-| s#     | char[]             | string     | # 		      |
+| s#     | char[]             | string     | # 		        |
 | v      | char[]             | string     | variable     |
 
 ## License
